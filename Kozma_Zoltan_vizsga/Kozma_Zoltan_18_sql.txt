@@ -1,0 +1,31 @@
+a)Mennyi az átlag fizetése az embereknek részlegenként.
+SELECT AVG(SAL) AS AtlagFizetes FROM emp GROUP BY DEPTNO;
+
+b)Kik dolgoznak a SALES részlegen.
+SELECT ENAME
+FROM emp e
+JOIN dept d ON e.DEPTNO = d.DEPTNO
+WHERE d.DNAME = 'SALES';
+
+c)Mi volt a legrégebbi belépési dátum és a legújabb. (egy lekérdezésben, két mezőként jelenjen meg.)
+SELECT 
+MIN(HIREDATE) AS Legregebbi,
+MAX(HIREDATE) AS Legujabb
+FROM emp;
+
+d)Írassa ki a SCOTT nevű emberek adatait. 
+SELECT *
+FROM emp
+WHERE ENAME = 'SCOTT';
+
+e)Hány MANAGER beosztású ember van?
+SELECT COUNT(*) AS ManagerDb
+FROM emp
+WHERE JOB = 'MANAGER';
+
+f)Jelenítse meg a részleg nevét és az ott dolgozó emberek adatait!
+SELECT d.DNAME, e.ENAME, e.JOB, e.SAL, e.HIREDATE
+FROM emp e
+JOIN dept d ON e.DEPTNO = d.DEPTNO
+ORDER BY d.DNAME, e.ENAME;
+
